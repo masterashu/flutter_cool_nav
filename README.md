@@ -15,10 +15,10 @@ dependencies:
 Now in your Dart code, you can use:
 
 ```dart
-import 'package:cool_nav/cool_nav';
+import 'package:cool_nav/cool_nav.dart';
 ```
 
-## Usage
+## List of Bottom Navigation Bars:
 
 #### Spotlight Bottom Navigation Bar
 
@@ -26,6 +26,25 @@ import 'package:cool_nav/cool_nav';
 A easy to use and customizable Bottom Navigation Bar. You can customize the
 colors as well provide a custom [Gradient](https://api.flutter.dev/flutter/dart-ui/Gradient-class.html)
 for the spotlight.
+**Code**
+```dart
+Scaffold(
+    // ...
+    bottomNavigationBar: SpotlightBottomNavigationBar(
+        items: [
+          SpotlightBottomNavigationBarItem(icon: Icons.smartphone),
+          SpotlightBottomNavigationBarItem(icon: Icons.laptop_mac),
+          SpotlightBottomNavigationBarItem(icon: Icons.desktop_mac),
+        ],
+        currentIndex: currentIndex,
+        selectedItemColor: Colors.cyan,
+        onTap: _onTap,
+    ),
+)
+```
+
 More Awesome Navigation Bars will be added in the future.
 
-View the [example]() folder to see more examples
+
+## Examples
+View the [example](https://github.com/masterashu/flutter_cool_nav/tree/master/example) folder to see more examples.
