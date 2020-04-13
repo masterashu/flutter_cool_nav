@@ -259,10 +259,17 @@ class _SpotlightBottomNavigationBarState
   }
 }
 
+/// An item that is used with [SpotlightBottomNavigationBar] containing the
+/// information about the items to display.
 class SpotlightBottomNavigationBarItem {
-  final IconData icon;
+  /// Creates an item that is used with [SpotlightBottomNavigationBar.items].
+  ///
+  /// The argument [icon] should not be null when used in a Material Design's [BottomNavigationBar].
+  SpotlightBottomNavigationBarItem({@required this.icon})
+      : assert(icon != null);
 
-  SpotlightBottomNavigationBarItem({@required this.icon});
+  /// The Icon which will be shown on the [SpotlightBottomNavigationBar]
+  final IconData icon;
 }
 
 class _SelectedItemHeaderPainter extends CustomPainter {
