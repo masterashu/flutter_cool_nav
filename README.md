@@ -22,10 +22,10 @@ import 'package:cool_nav/cool_nav.dart';
 
 #### Spotlight Bottom Navigation Bar
 
-![Spotlight Bottom Navigation Bar](demo/spotlight_bottom_navigation_bar.gif)  
+![Spotlight Bottom Navigation Bar](https://github.com/masterashu/flutter_cool_nav/blob/master/demo/spotlight_bottom_navigation_bar.gif?raw=true)  
 A easy to use and customizable Bottom Navigation Bar. You can customize the
-colors as well provide a custom [Gradient](https://api.flutter.dev/flutter/dart-ui/Gradient-class.html)
-for the spotlight.
+colors as well provide a custom [Gradient](https://api.flutter.dev/flutter/dart-ui/Gradient-class.html) for the spotlight.  
+  
 **Code**
 ```dart
 Scaffold(
