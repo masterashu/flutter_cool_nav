@@ -1,5 +1,7 @@
 # cool_nav
 
+![Pub Version (including pre-releases)](https://img.shields.io/pub/v/cool_nav?include_prereleases)
+
 A collection of really awesome, easy to use BottomNavigationBars
 
 ## Getting Started
