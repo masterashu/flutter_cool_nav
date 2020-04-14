@@ -1,7 +1,7 @@
 # cool_nav
 
-![Pub Version (including pre-releases)](https://img.shields.io/pub/v/cool_nav?include_prereleases)
-![Github Action Status](https://github.com/masterashu/flutter_cool_nav/workflows/Dart%20CI/badge.svg)
+[![Pub Version (including pre-releases)](https://img.shields.io/pub/v/cool_nav?include_prereleases)](https://pub.dev/packages/cool_nav)
+[![Github Action Status](https://github.com/masterashu/flutter_cool_nav/workflows/Dart%20CI/badge.svg)](https://github.com/masterashu/flutter_cool_nav/actions)
 
 A collection of really awesome, easy to use BottomNavigationBars
 
