@@ -53,9 +53,9 @@ packages:
   cool_nav:
     dependency: "direct main"
     description:
-      path: ".."
-      relative: true
-    source: path
+      name: cool_nav
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "0.0.2"
   crypto:
     dependency: transitive
