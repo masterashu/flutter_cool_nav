@@ -1,3 +1,10 @@
+## [0.0.3] - 29-04-2020
+
+Changes:
+* Added `FlipBoxBottomNavigationBar`.
+* Divided diffrent files for examples.
+* Added example for usage of `FlipBoxBottomNavigationBar`.
+
 ## [0.0.2] - 13-04-2020
 
 Changes:

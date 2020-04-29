@@ -26,10 +26,11 @@ import 'package:cool_nav/cool_nav.dart';
 #### Spotlight Bottom Navigation Bar
 
 ![Spotlight Bottom Navigation Bar](https://github.com/masterashu/flutter_cool_nav/blob/master/demo/spotlight_bottom_navigation_bar.gif?raw=true)  
-A easy to use and customizable Bottom Navigation Bar. You can customize the
-colors as well provide a custom [Gradient](https://api.flutter.dev/flutter/dart-ui/Gradient-class.html) for the spotlight.  
-  
-**Code**
+An easy to use and customizable Bottom Navigation Bar. You can customize the
+colors as well provide a custom [Gradient](https://api.flutter.dev/flutter/dart-ui/Gradient-class.html) for the spotlight.
+
+**Usage**
+
 ```dart
 Scaffold(
     // ...
@@ -46,8 +47,49 @@ Scaffold(
 )
 ```
 
+#### Flip Box Bottom Navigation Bar
+
+![Flip Box Bottom Navigation Bar](https://github.com/masterashu/flutter_cool_nav/blob/master/demo/flipbox_nav_bar.gif?raw=true)  
+An easy to use and customizable Bottom Navigation Bar. You can customize the selected and unselected `Icons` and background `Colors` for the tiles.
+
+**Usage**
+
+```dart
+Scaffold(
+    // ...
+    bottomNavigationBar: FlipBoxNavigationBar(
+          currentIndex: currentIndex,
+          verticalPadding: 20.0,
+          items: <FlipBoxNavigationBarItem>[
+            FlipBoxNavigationBarItem(
+              name: 'Tasks',
+              selectedIcon: Icons.done_all,
+              selectedBackgroundColor: Colors.deepPurpleAccent[200],
+              unselectedBackgroundColor: Colors.deepPurpleAccent[100],
+            ),
+            FlipBoxNavigationBarItem(
+              name: 'People',
+              selectedIcon: Icons.person,
+              unselectedIcon: Icons.person_outline,
+              selectedBackgroundColor: Colors.indigoAccent[200],
+              unselectedBackgroundColor: Colors.indigoAccent[100],
+            ),
+            FlipBoxNavigationBarItem(
+              name: 'Mail',
+              selectedIcon: Icons.mail,
+              unselectedIcon: Icons.mail_outline,
+              selectedBackgroundColor: Colors.blueAccent[200],
+              unselectedBackgroundColor: Colors.blueAccent[100],
+            ),
+          ]
+    ),
+)
+```
+
+Refer [here](https://github.com/masterashu/flutter_cool_nav/blob/master/example/lib/flipbox_nav_bar.dart) for an example.
+
 More Awesome Navigation Bars will be added in the future.
 
-
 ## Examples
+
 View the [example](https://github.com/masterashu/flutter_cool_nav/tree/master/example) folder to see more examples.
