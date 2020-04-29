@@ -5,7 +5,8 @@ class FlipBoxNavigationBarHome extends StatefulWidget {
   FlipBoxNavigationBarHome({Key key}) : super(key: key);
 
   @override
-  _FlipBoxNavigationBarHomeState createState() => _FlipBoxNavigationBarHomeState();
+  _FlipBoxNavigationBarHomeState createState() =>
+      _FlipBoxNavigationBarHomeState();
 }
 
 class _FlipBoxNavigationBarHomeState extends State<FlipBoxNavigationBarHome> {

@@ -24,8 +24,10 @@ class FlipBoxNavigationBar extends StatefulWidget {
   FlipBoxNavigationBar({
     @required this.items,
     this.currentIndex = 0,
-    this.selectedItemTheme = const IconThemeData(size: 24.0, color: Colors.black),
-    this.unselectedItemTheme = const IconThemeData(size: 24.0, color: Colors.black),
+    this.selectedItemTheme =
+        const IconThemeData(size: 24.0, color: Colors.black),
+    this.unselectedItemTheme =
+        const IconThemeData(size: 24.0, color: Colors.black),
     this.verticalPadding = 16,
     this.backgroundColor,
     this.textStyle,
@@ -35,7 +37,8 @@ class FlipBoxNavigationBar extends StatefulWidget {
   })  : assert(items != null && items.length >= 3),
         assert(selectedItemTheme != null),
         assert(selectedItemTheme != null),
-        assert(duration == null || duration > const Duration(milliseconds: 100)),
+        assert(
+            duration == null || duration > const Duration(milliseconds: 100)),
         assert(verticalPadding >= 4.0),
         super(key: key);
 
@@ -173,10 +176,12 @@ class FlipBoxNavigationBarTile extends StatefulWidget {
   }
 
   @override
-  _FlipBoxNavigationBarTileState createState() => _FlipBoxNavigationBarTileState();
+  _FlipBoxNavigationBarTileState createState() =>
+      _FlipBoxNavigationBarTileState();
 }
 
-class _FlipBoxNavigationBarState extends State<FlipBoxNavigationBar> with TickerProviderStateMixin {
+class _FlipBoxNavigationBarState extends State<FlipBoxNavigationBar>
+    with TickerProviderStateMixin {
   List<AnimationController> _controllers;
   int oldIndex;
 
