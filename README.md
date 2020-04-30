@@ -26,6 +26,9 @@ import 'package:cool_nav/cool_nav.dart';
 #### Spotlight Bottom Navigation Bar
 
 ![Spotlight Bottom Navigation Bar](https://github.com/masterashu/flutter_cool_nav/blob/master/demo/spotlight_bottom_navigation_bar.gif?raw=true)  
+
+> Based on [design](https://www.behance.net/gallery/94842819/Animated-Tab-Bar) made by [Sanchita Agarwal](https://www.linkedin.com/in/sanchita-agrawal-829a5612b).
+
 An easy to use and customizable Bottom Navigation Bar. You can customize the
 colors as well provide a custom [Gradient](https://api.flutter.dev/flutter/dart-ui/Gradient-class.html) for the spotlight.
 
@@ -50,6 +53,9 @@ Scaffold(
 #### Flip Box Bottom Navigation Bar
 
 ![Flip Box Bottom Navigation Bar](https://github.com/masterashu/flutter_cool_nav/blob/master/demo/flipbox_nav_bar.gif?raw=true)  
+
+> Based on [design](https://dribbble.com/shots/4811135-Tab-Bar-Cube-Interaction) made by [dannniel](https://dribbble.com/dannniel).
+
 An easy to use and customizable Bottom Navigation Bar. You can customize the selected and unselected `Icons` and background `Colors` for the tiles.
 
 **Usage**
