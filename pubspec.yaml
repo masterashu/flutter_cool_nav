@@ -1,12 +1,12 @@
 name: cool_nav
 description: A collection of really awesome, easy to use Bottom Navigation Bars.
-version: 0.0.3
+version: 0.1.0
 homepage: https://github.com/masterashu/flutter_cool_nav
 repository: https://github.com/masterashu/flutter_cool_nav
 issue_tracker: https://github.com/masterashu/flutter_cool_nav/issues
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:

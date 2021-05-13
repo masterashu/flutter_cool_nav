@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:cool_nav/cool_nav.dart';
 
 class SpotlightNavBarHome extends StatefulWidget {
-  SpotlightNavBarHome({Key key}) : super(key: key);
+  SpotlightNavBarHome({Key? key}) : super(key: key);
 
   @override
   _SpotlightNavBarHomeState createState() => _SpotlightNavBarHomeState();
 }
 
 class _SpotlightNavBarHomeState extends State<SpotlightNavBarHome> {
-  int currentIndex;
+  late int currentIndex;
 
   _updateIndex(index) {
     setState(() {

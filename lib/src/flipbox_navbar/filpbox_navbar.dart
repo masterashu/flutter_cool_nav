@@ -22,23 +22,18 @@ class FlipBoxNavigationBar extends StatefulWidget {
   /// The [duration] can be used to have custom [Duration] of animation.
   /// [duration] must be greater than 100ms.
   FlipBoxNavigationBar({
-    @required this.items,
+    required this.items,
     this.currentIndex = 0,
-    this.selectedItemTheme =
-        const IconThemeData(size: 24.0, color: Colors.black),
-    this.unselectedItemTheme =
-        const IconThemeData(size: 24.0, color: Colors.black),
+    this.selectedItemTheme = const IconThemeData(size: 24.0, color: Colors.black),
+    this.unselectedItemTheme = const IconThemeData(size: 24.0, color: Colors.black),
     this.verticalPadding = 16,
     this.backgroundColor,
     this.textStyle,
-    this.duration,
+    this.duration = const Duration(milliseconds: 800),
     this.onTap,
-    Key key,
-  })  : assert(items != null && items.length >= 3),
-        assert(selectedItemTheme != null),
-        assert(selectedItemTheme != null),
-        assert(
-            duration == null || duration > const Duration(milliseconds: 100)),
+    Key? key,
+  })  : assert(items.length >= 3),
+        assert(duration > const Duration(milliseconds: 100)),
         assert(verticalPadding >= 4.0),
         super(key: key);
 
@@ -53,7 +48,7 @@ class FlipBoxNavigationBar extends StatefulWidget {
   /// The stateful widget that creates the bottom navigation bar needs to keep
   /// track of the index of the selected [FlipBoxNavigationBar] and call
   /// `setState` to rebuild the bottom navigation bar with the new [currentIndex].
-  final ValueChanged<int> onTap;
+  final ValueChanged<int>? onTap;
 
   /// Defines the size and color of the item's icon when it is selected.
   final IconThemeData selectedItemTheme;
@@ -62,7 +57,7 @@ class FlipBoxNavigationBar extends StatefulWidget {
   final IconThemeData unselectedItemTheme;
 
   /// Defines the style of the item's name when it is selected.
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
 
   /// The background color of [FlipBoxNavigationBar] itself.
   final backgroundColor;
@@ -79,8 +74,8 @@ class FlipBoxNavigationBar extends StatefulWidget {
   /// Calculates the maximum size of selected/unselected icon size of [FlipBoxNavigationBarItem].
   double get maxIconSize {
     var iconSize = 24.0;
-    iconSize = max(iconSize, selectedItemTheme?.size ?? 24.0);
-    iconSize = max(iconSize, unselectedItemTheme?.size ?? 24.0);
+    iconSize = max(iconSize, selectedItemTheme.size ?? 24.0);
+    iconSize = max(iconSize, unselectedItemTheme.size ?? 24.0);
     return iconSize;
   }
 
@@ -97,14 +92,12 @@ class FlipBoxNavigationBarItem {
   ///
   /// The [selectedIcon] will be used if [unselectedIcon] is null.
   FlipBoxNavigationBarItem({
-    @required this.name,
-    @required this.selectedIcon,
+    required this.name,
+    required this.selectedIcon,
     this.selectedBackgroundColor = Colors.blue,
     this.unselectedBackgroundColor = Colors.lightBlue,
     unselectedIcon,
-  })  : assert(name != null),
-        assert(selectedIcon != null),
-        unselectedIcon = unselectedIcon ?? selectedIcon;
+  }) : unselectedIcon = unselectedIcon ?? selectedIcon;
 
   /// The text to be displayed for the selected item.
   final String name;
@@ -133,15 +126,14 @@ class FlipBoxNavigationBarTile extends StatefulWidget {
   ///
   /// The [item] and [animation] is required.
   FlipBoxNavigationBarTile({
-    @required this.item,
-    @required Animation animation,
+    required this.item,
+    required Animation animation,
     this.height = 56.0,
     this.textStyle = const TextStyle(fontSize: 12.0),
     this.selectedIconTheme,
     this.unselectedIconTheme,
-    Key key,
+    Key? key,
   })  : assert(height >= 0.0),
-        assert(textStyle != null),
         animation = _generateTween(animation),
         super(key: key);
 
@@ -159,10 +151,10 @@ class FlipBoxNavigationBarTile extends StatefulWidget {
   final TextStyle textStyle;
 
   /// Defines the [IconThemeData] for the selected item.
-  final IconThemeData selectedIconTheme;
+  final IconThemeData? selectedIconTheme;
 
   /// Defines the [IconThemeData] for the unselected item.
-  final IconThemeData unselectedIconTheme;
+  final IconThemeData? unselectedIconTheme;
 
   /// Interpolates an existing animation to a Bounce back [Curve] animation.
   static _generateTween(Animation animation) {
@@ -172,30 +164,29 @@ class FlipBoxNavigationBarTile extends StatefulWidget {
       TweenSequenceItem(tween: Tween(begin: 0.0, end: 1.0), weight: 20.0),
       TweenSequenceItem(tween: Tween(begin: 1.0, end: 1.1), weight: 30.0),
       TweenSequenceItem(tween: Tween(begin: 1.1, end: 1.0), weight: 20.0),
-    ]).animate(animation);
+    ]).animate(animation as Animation<double>);
   }
 
   @override
-  _FlipBoxNavigationBarTileState createState() =>
-      _FlipBoxNavigationBarTileState();
+  _FlipBoxNavigationBarTileState createState() => _FlipBoxNavigationBarTileState();
 }
 
 class _FlipBoxNavigationBarState extends State<FlipBoxNavigationBar>
     with TickerProviderStateMixin {
-  List<AnimationController> _controllers;
-  int oldIndex;
+  List<AnimationController>? _controllers;
+  int? oldIndex;
 
   // Resets the controllers
   resetState() {
     // dispose any old controllers
     if (_controllers != null) {
-      _controllers.forEach((e) => e.dispose());
+      _controllers!.forEach((e) => e.dispose());
     }
     // Create new controllers
     _controllers = List<AnimationController>.generate(
       widget.items.length,
       (index) => AnimationController(
-        duration: widget.duration ?? const Duration(milliseconds: 800),
+        duration: widget.duration,
         vsync: this,
       ),
     );
@@ -204,11 +195,11 @@ class _FlipBoxNavigationBarState extends State<FlipBoxNavigationBar>
   // Starts the flip animation
   switchIndex() {
     if (oldIndex != widget.currentIndex) {
-      _controllers[oldIndex].reverse(from: 1.0);
-      _controllers[widget.currentIndex].forward(from: 0.0);
+      _controllers![oldIndex!].reverse(from: 1.0);
+      _controllers![widget.currentIndex].forward(from: 0.0);
     } else {
       // partially animate the selected tile
-      _controllers[widget.currentIndex].forward(from: 0.8);
+      _controllers![widget.currentIndex].forward(from: 0.8);
     }
   }
 
@@ -240,12 +231,12 @@ class _FlipBoxNavigationBarState extends State<FlipBoxNavigationBar>
         child: GestureDetector(
           onTap: () {
             if (widget.onTap != null) {
-              widget.onTap(index);
+              widget.onTap!(index);
             }
           },
           child: FlipBoxNavigationBarTile(
             item: widget.items[index],
-            animation: _controllers[index],
+            animation: _controllers![index],
             height: widget.verticalPadding * 2 + widget.maxIconSize,
             selectedIconTheme: widget.selectedItemTheme,
             unselectedIconTheme: widget.unselectedItemTheme,
@@ -271,7 +262,7 @@ class _FlipBoxNavigationBarState extends State<FlipBoxNavigationBar>
 
   @override
   void dispose() {
-    _controllers.forEach((e) => e.dispose());
+    _controllers!.forEach((e) => e.dispose());
     super.dispose();
   }
 }
