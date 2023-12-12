@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'flipbox_nav_bar.dart';
-import 'spotlight_nav_bar.dart';
 
 void main() => runApp(MyApp());
 

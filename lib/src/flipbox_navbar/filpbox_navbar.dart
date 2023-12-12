@@ -1,6 +1,5 @@
 import 'dart:math' show pi, max;
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 /// A Custom Bottom Navigation Bar that is displayed at the bottom of the
@@ -24,8 +23,10 @@ class FlipBoxNavigationBar extends StatefulWidget {
   FlipBoxNavigationBar({
     required this.items,
     this.currentIndex = 0,
-    this.selectedItemTheme = const IconThemeData(size: 24.0, color: Colors.black),
-    this.unselectedItemTheme = const IconThemeData(size: 24.0, color: Colors.black),
+    this.selectedItemTheme =
+        const IconThemeData(size: 24.0, color: Colors.black),
+    this.unselectedItemTheme =
+        const IconThemeData(size: 24.0, color: Colors.black),
     this.verticalPadding = 16,
     this.backgroundColor,
     this.textStyle,
@@ -168,7 +169,8 @@ class FlipBoxNavigationBarTile extends StatefulWidget {
   }
 
   @override
-  _FlipBoxNavigationBarTileState createState() => _FlipBoxNavigationBarTileState();
+  _FlipBoxNavigationBarTileState createState() =>
+      _FlipBoxNavigationBarTileState();
 }
 
 class _FlipBoxNavigationBarState extends State<FlipBoxNavigationBar>
