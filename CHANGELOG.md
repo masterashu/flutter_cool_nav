@@ -1,3 +1,8 @@
+## [0.1.1] - 13-12-2023
+
+Changes:
+* [Maintenance by guyluz11](https://github.com/masterashu/flutter_cool_nav/pull/5)
+
 ## [0.1.0] - 13-05-2021
 
 Changes:
