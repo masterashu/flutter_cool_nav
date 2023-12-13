@@ -21,15 +21,15 @@ Now in your Dart code, you can use:
 import 'package:cool_nav/cool_nav.dart';
 ```
 
-## List of Bottom Navigation Bars:
+## List of Navigation Bars:
 
-#### Spotlight Bottom Navigation Bar
+#### Spotlight Navigation Bar
 
-![Spotlight Bottom Navigation Bar](https://github.com/masterashu/flutter_cool_nav/blob/master/demo/spotlight_bottom_navigation_bar.gif?raw=true)  
+![Spotlight Navigation Bar](https://github.com/masterashu/flutter_cool_nav/blob/master/demo/spotlight_navigation_bar.gif?raw=true)  
 
 > Based on [design](https://www.behance.net/gallery/94842819/Animated-Tab-Bar) made by [Sanchita Agarwal](https://www.linkedin.com/in/sanchita-agrawal-829a5612b).
 
-An easy to use and customizable Bottom Navigation Bar. You can customize the
+An easy to use and customizable Navigation Bar. You can customize the
 colors as well provide a custom [Gradient](https://api.flutter.dev/flutter/dart-ui/Gradient-class.html) for the spotlight.
 
 **Usage**
@@ -37,26 +37,26 @@ colors as well provide a custom [Gradient](https://api.flutter.dev/flutter/dart-
 ```dart
 Scaffold(
     // ...
-    bottomNavigationBar: SpotlightBottomNavigationBar(
+    bottomNavigationBar: SpotlightNavigationBar(
         items: [
-          SpotlightBottomNavigationBarItem(icon: Icons.smartphone),
-          SpotlightBottomNavigationBarItem(icon: Icons.laptop_mac),
-          SpotlightBottomNavigationBarItem(icon: Icons.desktop_mac),
+          SpotlightNavigationBarItem(icon: Icons.smartphone),
+          SpotlightNavigationBarItem(icon: Icons.laptop_mac),
+          SpotlightNavigationBarItem(icon: Icons.desktop_mac),
         ],
-        currentIndex: currentIndex,
+        selectedIndex: selectedIndex,
         selectedItemColor: Colors.cyan,
         onTap: _onTap,
     ),
 )
 ```
 
-#### Flip Box Bottom Navigation Bar
+#### Flip Box Navigation Bar
 
-![Flip Box Bottom Navigation Bar](https://github.com/masterashu/flutter_cool_nav/blob/master/demo/flipbox_nav_bar.gif?raw=true)  
+![Flip Box Navigation Bar](https://github.com/masterashu/flutter_cool_nav/blob/master/demo/flipbox_navigation_bar.gif?raw=true)  
 
 > Based on [design](https://dribbble.com/shots/4811135-Tab-Bar-Cube-Interaction) made by [dannniel](https://dribbble.com/dannniel).
 
-An easy to use and customizable Bottom Navigation Bar. You can customize the selected and unselected `Icons` and background `Colors` for the tiles.
+An easy to use and customizable Navigation Bar. You can customize the selected and unselected `Icons` and background `Colors` for the tiles.
 
 **Usage**
 
@@ -64,7 +64,7 @@ An easy to use and customizable Bottom Navigation Bar. You can customize the sel
 Scaffold(
     // ...
     bottomNavigationBar: FlipBoxNavigationBar(
-          currentIndex: currentIndex,
+          selectedIndex: selectedIndex,
           verticalPadding: 20.0,
           items: <FlipBoxNavigationBarItem>[
             FlipBoxNavigationBarItem(

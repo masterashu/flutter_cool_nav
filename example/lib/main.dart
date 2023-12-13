@@ -1,3 +1,4 @@
+import 'package:example/spotlight_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'flipbox_nav_bar.dart';
 
@@ -11,8 +12,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // home: SpotlightNavigationBarHome(),
-      home: FlipBoxNavigationBarHome(),
+      home: Column(
+        children: [
+          Expanded(
+            child: SpotlightNavBarHome(),
+          ),
+          Expanded(
+            child: FlipBoxNavigationBarHome(),
+          ),
+        ],
+      ),
     );
   }
 }

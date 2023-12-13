@@ -10,18 +10,18 @@ class FlipBoxNavigationBarHome extends StatefulWidget {
 }
 
 class _FlipBoxNavigationBarHomeState extends State<FlipBoxNavigationBarHome> {
-  late int currentIndex;
+  late int selectedIndex;
 
-  _updateIndex(index) {
+  _updateSelectedIndex(index) {
     setState(() {
-      currentIndex = index;
+      selectedIndex = index;
     });
   }
 
   @override
   void initState() {
     super.initState();
-    currentIndex = 0;
+    selectedIndex = 0;
   }
 
   List<Text> texts = [
@@ -36,13 +36,13 @@ class _FlipBoxNavigationBarHomeState extends State<FlipBoxNavigationBarHome> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Example'),
+          title: Text('Flipbox'),
         ),
         body: Center(
-          child: texts[currentIndex],
+          child: texts[selectedIndex],
         ),
         bottomNavigationBar: FlipBoxNavigationBar(
-          currentIndex: currentIndex,
+          selectedIndex: selectedIndex,
           verticalPadding: 20.0,
           items: <FlipBoxNavigationBarItem>[
             FlipBoxNavigationBarItem(
@@ -81,7 +81,7 @@ class _FlipBoxNavigationBarHomeState extends State<FlipBoxNavigationBarHome> {
               unselectedBackgroundColor: Colors.orangeAccent[100]!,
             ),
           ],
-          onTap: _updateIndex,
+          onDestinationSelected: _updateSelectedIndex,
         ));
   }
 }
