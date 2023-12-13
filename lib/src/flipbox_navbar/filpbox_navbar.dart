@@ -2,13 +2,13 @@ import 'dart:math' show pi, max;
 
 import 'package:flutter/material.dart';
 
-/// A Custom Bottom Navigation Bar that is displayed at the bottom of the
+/// A Custom Navigation Bar that is displayed at the bottom of the
 /// screen. The [FlipBoxNavigationBar] animated between the selected and
 /// the unselected state it similar to a the rotation of a rectangle box.
 /// This navigation bar is usually can be used in a [Scaffold], by providing
 /// it as the [Scaffold.bottomNavigationBar] argument.
 class FlipBoxNavigationBar extends StatefulWidget {
-  /// Creates a flip box bottom navigation bar which can be used with
+  /// Creates a flip box navigation bar which can be used with
   /// [Scaffold]'s [Scaffold.bottomNavigationBar] argument.
   ///
   /// The length of [items] should be at least three.
@@ -22,7 +22,7 @@ class FlipBoxNavigationBar extends StatefulWidget {
   /// [duration] must be greater than 100ms.
   FlipBoxNavigationBar({
     required this.items,
-    this.currentIndex = 0,
+    this.selectedIndex = 0,
     this.selectedItemTheme =
         const IconThemeData(size: 24.0, color: Colors.black),
     this.unselectedItemTheme =
@@ -31,25 +31,25 @@ class FlipBoxNavigationBar extends StatefulWidget {
     this.backgroundColor,
     this.textStyle,
     this.duration = const Duration(milliseconds: 800),
-    this.onTap,
+    this.onDestinationSelected,
     Key? key,
   })  : assert(items.length >= 3),
         assert(duration > const Duration(milliseconds: 100)),
         assert(verticalPadding >= 4.0),
         super(key: key);
 
-  /// Defines the list of items to show on the bottom navigation bar.
+  /// Defines the list of items to show on the navigation bar.
   final List<FlipBoxNavigationBarItem> items;
 
   /// The index of the selected [FlipBoxNavigationBar] in [items].
-  final int currentIndex;
+  final int selectedIndex;
 
   /// Called when one of the [items] is tapped.
   ///
-  /// The stateful widget that creates the bottom navigation bar needs to keep
+  /// The stateful widget that creates the navigation bar needs to keep
   /// track of the index of the selected [FlipBoxNavigationBar] and call
-  /// `setState` to rebuild the bottom navigation bar with the new [currentIndex].
-  final ValueChanged<int>? onTap;
+  /// `setState` to rebuild the navigation bar with the new [selectedIndex].
+  final ValueChanged<int>? onDestinationSelected;
 
   /// Defines the size and color of the item's icon when it is selected.
   final IconThemeData selectedItemTheme;
@@ -196,12 +196,12 @@ class _FlipBoxNavigationBarState extends State<FlipBoxNavigationBar>
 
   // Starts the flip animation
   switchIndex() {
-    if (oldIndex != widget.currentIndex) {
+    if (oldIndex != widget.selectedIndex) {
       _controllers![oldIndex!].reverse(from: 1.0);
-      _controllers![widget.currentIndex].forward(from: 0.0);
+      _controllers![widget.selectedIndex].forward(from: 0.0);
     } else {
       // partially animate the selected tile
-      _controllers![widget.currentIndex].forward(from: 0.8);
+      _controllers![widget.selectedIndex].forward(from: 0.8);
     }
   }
 
@@ -209,7 +209,7 @@ class _FlipBoxNavigationBarState extends State<FlipBoxNavigationBar>
   void initState() {
     super.initState();
     resetState();
-    oldIndex = widget.currentIndex;
+    oldIndex = widget.selectedIndex;
     switchIndex();
   }
 
@@ -219,9 +219,9 @@ class _FlipBoxNavigationBarState extends State<FlipBoxNavigationBar>
     // Reset controllers when length of items is changed
     if (oldWidget.items.length != widget.items.length) {
       resetState();
-      oldIndex = widget.currentIndex;
+      oldIndex = widget.selectedIndex;
     } else {
-      oldIndex = oldWidget.currentIndex;
+      oldIndex = oldWidget.selectedIndex;
     }
     switchIndex();
   }
@@ -232,8 +232,8 @@ class _FlipBoxNavigationBarState extends State<FlipBoxNavigationBar>
       return Expanded(
         child: GestureDetector(
           onTap: () {
-            if (widget.onTap != null) {
-              widget.onTap!(index);
+            if (widget.onDestinationSelected != null) {
+              widget.onDestinationSelected!(index);
             }
           },
           child: FlipBoxNavigationBarTile(

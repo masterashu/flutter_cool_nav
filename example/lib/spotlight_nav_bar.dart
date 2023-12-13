@@ -9,18 +9,18 @@ class SpotlightNavBarHome extends StatefulWidget {
 }
 
 class _SpotlightNavBarHomeState extends State<SpotlightNavBarHome> {
-  late int currentIndex;
+  late int selectedIndex;
 
   _updateIndex(index) {
     setState(() {
-      currentIndex = index;
+      selectedIndex = index;
     });
   }
 
   @override
   void initState() {
     super.initState();
-    currentIndex = 0;
+    selectedIndex = 0;
   }
 
   List<Text> texts = [
@@ -34,30 +34,20 @@ class _SpotlightNavBarHomeState extends State<SpotlightNavBarHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Example"),
+        title: Text("Spotlight"),
       ),
       body: Center(
-        child: texts[currentIndex],
+        child: texts[selectedIndex],
       ),
-      bottomNavigationBar: SpotlightBottomNavigationBar(
+      bottomNavigationBar: SpotlightNavigationBar(
         items: [
-          SpotlightBottomNavigationBarItem(icon: Icons.smartphone),
-          SpotlightBottomNavigationBarItem(icon: Icons.web),
-          SpotlightBottomNavigationBarItem(icon: Icons.laptop_mac),
-          SpotlightBottomNavigationBarItem(icon: Icons.desktop_mac),
+          SpotlightNavigationBarItem(icon: Icons.smartphone),
+          SpotlightNavigationBarItem(icon: Icons.laptop_mac),
+          SpotlightNavigationBarItem(icon: Icons.desktop_mac),
         ],
-        currentIndex: currentIndex,
-        onTap: _updateIndex,
-        backgroundColor: Colors.white,
-        selectedItemColor: Colors.purple,
-        spotlightGradient: RadialGradient(colors: [
-          Colors.indigo,
-          Colors.blue.withAlpha(200),
-          Colors.green.withAlpha(150),
-          Colors.yellow.withAlpha(100),
-          Colors.orange.withAlpha(50),
-          Colors.red.withAlpha(0),
-        ], center: Alignment.topCenter),
+        selectedIndex: selectedIndex,
+        selectedItemColor: Colors.cyan,
+        onDestinationSelected: _updateIndex,
       ),
     );
   }
