@@ -164,16 +164,36 @@ class _SpotlightNavigationBarState extends State<SpotlightNavigationBar>
     }
   }
 
-  _buildItems() {
+  _buildItems(Animation opacityTween) {
     List<Widget> tiles = [];
     for (var i = 0; i < widget.items.length; i++) {
       tiles.add(Expanded(
         child: GestureDetector(
-          child: _SpotlightNavigationBarTile(
-            key: UniqueKey(),
-            icon: widget.items[i].icon,
-            iconTheme: _getThemeData(
-                (widget.selectedIndex == i) && animation.value >= 0.7),
+          child: Center(
+            child: Stack(
+              children: [
+                if (widget.selectedIndex == i &&
+                    opacityTween.status == AnimationStatus.completed)
+                  Opacity(
+                    opacity: opacityTween.value,
+                    child: CustomPaint(
+                      painter: _SpotlightPainter(
+                        offset: Offset(widget.iconSize / 2 + 3.5, 0),
+                        iconSize: widget.iconSize,
+                        gradient: widget.spotlightGradient,
+                        color: widget.selectedIconTheme?.color ??
+                            widget.selectedItemColor,
+                      ),
+                    ),
+                  ),
+                _SpotlightNavigationBarTile(
+                  key: UniqueKey(),
+                  icon: widget.items[i].icon,
+                  iconTheme: _getThemeData(
+                      (widget.selectedIndex == i) && animation.value >= 0.7),
+                ),
+              ],
+            ),
           ),
           onTap: () {
             if (widget.onDestinationSelected != null) {
@@ -187,18 +207,11 @@ class _SpotlightNavigationBarState extends State<SpotlightNavigationBar>
     return tiles;
   }
 
-  _spotlightOffset(BuildContext context) {
-    var freeSpace = (MediaQuery.of(context).size.width / widget.items.length) -
-        widget.iconSize;
-    var pos = (animation.value >= 0.5) ? widget.selectedIndex : oldIndex;
-    return Offset(freeSpace / 2 + (freeSpace + widget.iconSize) * pos, 0);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
       height: max(56.0, (widget.iconSize + 24)),
-      width: MediaQuery.of(context).size.width,
+      width: double.infinity,
       decoration: BoxDecoration(color: widget.backgroundColor),
       child: AnimatedBuilder(
         animation: animation,
@@ -208,22 +221,11 @@ class _SpotlightNavigationBarState extends State<SpotlightNavigationBar>
                   CurvedAnimation(parent: animation, curve: Interval(0.8, 1.0)))
               : Tween(begin: 1.0, end: 0.0).animate(CurvedAnimation(
                   parent: animation, curve: Interval(0.0, 0.2)));
+
           return Stack(
             children: <Widget>[
-              Opacity(
-                opacity: opacityTween.value,
-                child: CustomPaint(
-                  painter: _SpotlightPainter(
-                    offset: _spotlightOffset(context),
-                    iconSize: widget.iconSize,
-                    gradient: widget.spotlightGradient,
-                    color: widget.selectedIconTheme?.color ??
-                        widget.selectedItemColor,
-                  ),
-                ),
-              ),
               Row(
-                children: _buildItems(),
+                children: _buildItems(opacityTween),
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
               ),
               CustomPaint(
@@ -239,9 +241,9 @@ class _SpotlightNavigationBarState extends State<SpotlightNavigationBar>
                           parent: animation, curve: Interval(0.1, 0.6))),
                 ),
                 child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
+                  width: double.infinity,
                 ),
-              )
+              ),
             ],
           );
         },
