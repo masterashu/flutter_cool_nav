@@ -12,7 +12,7 @@ class FlipBoxNavigationBarHome extends StatefulWidget {
 class _FlipBoxNavigationBarHomeState extends State<FlipBoxNavigationBarHome> {
   late int selectedIndex;
 
-  _updateIndex(index) {
+  _updateSelectedIndex(index) {
     setState(() {
       selectedIndex = index;
     });
@@ -81,7 +81,7 @@ class _FlipBoxNavigationBarHomeState extends State<FlipBoxNavigationBarHome> {
               unselectedBackgroundColor: Colors.orangeAccent[100]!,
             ),
           ],
-          onDestinationSelected: _updateIndex,
+          onDestinationSelected: _updateSelectedIndex,
         ));
   }
 }

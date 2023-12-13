@@ -11,7 +11,7 @@ class SpotlightNavBarHome extends StatefulWidget {
 class _SpotlightNavBarHomeState extends State<SpotlightNavBarHome> {
   late int selectedIndex;
 
-  _updateIndex(index) {
+  _updateSelectedIndex(index) {
     setState(() {
       selectedIndex = index;
     });
@@ -47,7 +47,7 @@ class _SpotlightNavBarHomeState extends State<SpotlightNavBarHome> {
         ],
         selectedIndex: selectedIndex,
         selectedItemColor: Colors.cyan,
-        onDestinationSelected: _updateIndex,
+        onDestinationSelected: _updateSelectedIndex,
       ),
     );
   }
